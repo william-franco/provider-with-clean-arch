@@ -1,6 +1,6 @@
 {
-    "name": "provider_value_notifier",
-    "short_name": "provider_value_notifier",
+    "name": "provider_with_clean_arch",
+    "short_name": "provider_with_clean_arch",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
