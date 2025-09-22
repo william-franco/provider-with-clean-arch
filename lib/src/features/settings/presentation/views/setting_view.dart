@@ -11,7 +11,7 @@ class SettingView extends StatelessWidget {
     showAboutDialog(
       context: context,
       applicationIcon: const FlutterLogo(),
-      applicationName: 'Provider Witch Clean Arch',
+      applicationName: 'Provider With Clean Arch',
       applicationVersion: 'Version 1.0.0',
       applicationLegalese: '\u{a9} 2025 William Franco',
     );
