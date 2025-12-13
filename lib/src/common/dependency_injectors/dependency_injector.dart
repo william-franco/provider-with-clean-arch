@@ -87,7 +87,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
     userViewModel = UserViewModelImpl(getAllUsersUseCase: getAllUsersUseCase);
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      _initDependencies();
+      await _initDependencies();
     });
   }
 
