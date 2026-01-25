@@ -1,4 +1,4 @@
-import 'package:provider_with_clean_arch/src/common/results/result.dart';
+import 'package:provider_with_clean_arch/src/common/patterns/result_pattern.dart';
 import 'package:provider_with_clean_arch/src/features/users/data/data_sources/user_data_source.dart';
 import 'package:provider_with_clean_arch/src/features/users/data/models/user_model.dart';
 import 'package:provider_with_clean_arch/src/features/users/domain/repositories/user_repository.dart';
