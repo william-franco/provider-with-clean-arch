@@ -4,20 +4,21 @@ import 'package:provider_with_clean_arch/src/common/state_management/state_manag
 import 'package:provider_with_clean_arch/src/features/users/domain/entities/user_entity.dart';
 import 'package:provider_with_clean_arch/src/features/users/domain/usecases/get_all_users_use_case.dart';
 
-typedef _ViewModel = StateManagement<UsersState>;
-
 typedef UsersState = AppState<List<UserEntity>>;
 
-abstract interface class UserViewModel extends _ViewModel {
-  UserViewModel(super.initialState);
+typedef _ViewModel = StateManagement<UsersState>;
 
+abstract interface class UserViewModel extends _ViewModel {
   Future<void> getAllUsers();
 }
 
 class UserViewModelImpl extends _ViewModel implements UserViewModel {
   final GetAllUsersUseCase getAllUsersUseCase;
 
-  UserViewModelImpl({required this.getAllUsersUseCase}) : super(InitialState());
+  UserViewModelImpl({required this.getAllUsersUseCase});
+
+  @override
+  UsersState build() => InitialState();
 
   @override
   Future<void> getAllUsers() async {
