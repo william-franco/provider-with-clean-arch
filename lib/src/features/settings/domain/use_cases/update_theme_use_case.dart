@@ -1,4 +1,4 @@
-import 'package:provider_with_clean_arch/src/features/settings/domain/repositories/setting_repository.dart';
+import 'package:provider_with_clean_arch/src/features/settings/domain/domain.dart';
 
 abstract interface class UpdateThemeUseCase {
   Future<void> call({required bool isDarkTheme});

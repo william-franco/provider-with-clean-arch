@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider_with_clean_arch/src/common/dependency_injectors/dependency_injector.dart';
 import 'package:provider_with_clean_arch/src/common/routes/routes.dart';
 import 'package:provider_with_clean_arch/src/common/state_management/state_management.dart';
-import 'package:provider_with_clean_arch/src/features/settings/domain/entities/setting_entity.dart';
-import 'package:provider_with_clean_arch/src/features/settings/presentation/view_models/setting_view_model.dart';
+import 'package:provider_with_clean_arch/src/features/settings/settings.dart';
 
 void main() {
   final Routes appRoutes = Routes();

@@ -1,4 +1,4 @@
-import 'package:provider_with_clean_arch/src/features/settings/domain/entities/setting_entity.dart';
+import 'package:provider_with_clean_arch/src/features/settings/domain/domain.dart';
 
 class SettingModel extends SettingEntity {
   @override

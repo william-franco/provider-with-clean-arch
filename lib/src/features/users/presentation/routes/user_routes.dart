@@ -1,9 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:provider_with_clean_arch/src/common/state_management/state_management.dart';
-import 'package:provider_with_clean_arch/src/features/users/domain/entities/user_entity.dart';
-import 'package:provider_with_clean_arch/src/features/users/presentation/view_models/user_view_model.dart';
-import 'package:provider_with_clean_arch/src/features/users/presentation/views/user_detail_view.dart';
-import 'package:provider_with_clean_arch/src/features/users/presentation/views/user_view.dart';
+import 'package:provider_with_clean_arch/src/features/users/domain/domain.dart';
+import 'package:provider_with_clean_arch/src/features/users/presentation/presentation.dart';
 
 class UserRoutes {
   static String get users => '/users';
