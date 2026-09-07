@@ -7,11 +7,5 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl({required this.userDataSource});
 
   @override
-  Future<UserResult> findAllUsers() async {
-    try {
-      return await userDataSource.findAllUsers();
-    } catch (error) {
-      throw Exception('SettingRepository: $error');
-    }
-  }
+  Future<UserResult> findAllUsers() => userDataSource.findAllUsers();
 }
