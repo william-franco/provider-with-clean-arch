@@ -1,12 +1,45 @@
 # Provider With Clean Arch
 
-Clean Architecture example using Provider.
+Clean Architecture sample with Provider wiring presentation, domain, and data layers.
+
+Use cases orchestrate business rules; repositories and data sources return `ResultPattern` instead of throwing.
+
+Users and settings features mirror the same layer boundaries for consistent testing.
+
+Shared modules provide HTTP, connectivity checks, storage, routing, and state management abstractions.
+
+Full test pyramid across data sources, repositories, use cases, and view models with CI analyze enabled.
+
+## Structure
+
+```mermaid
+flowchart TB
+  subgraph presentation [presentation]
+    UserRoute --> UserViewModel
+    SettingRoute --> SettingViewModel
+  end
+  UserViewModel --> GetAllUsersUseCase
+  SettingViewModel --> UpdateThemeUseCase
+  subgraph domain [domain]
+    GetAllUsersUseCase --> UserRepositoryPort[UserRepository interface]
+    UpdateThemeUseCase --> SettingRepositoryPort[SettingRepository interface]
+  end
+  subgraph data [data]
+    UserRepositoryPort --> UserRepositoryImpl
+    UserRepositoryImpl --> UserDataSource
+    UserDataSource --> HttpService
+    SettingRepositoryPort --> SettingRepositoryImpl
+    SettingRepositoryImpl --> SettingDataSource
+    SettingDataSource --> SharedPreferences
+  end
+  HttpService --> JsonPlaceholder[JSONPlaceholder API]
+```
 
 ## Stack
 
 | Technology | Version |
 |------------|---------|
-| Dart SDK | ^3.13.2 |
+| Dart SDK | ^3.13.3 |
 | connectivity_plus | ^7.0.0 |
 | cupertino_icons | ^1.0.8 |
 | dio | ^5.9.2 |
@@ -14,6 +47,8 @@ Clean Architecture example using Provider.
 | go_router | ^17.2.3 |
 | shared_preferences | ^2.5.5 |
 | flutter_lints | ^6.0.0 |
+| build_runner | ^2.15.0 |
+| mockito | ^5.6.4 |
 | Android Gradle Plugin | 9.1.0 |
 | Kotlin | 2.4.0 |
 | compileSdk / targetSdk | 36 |
