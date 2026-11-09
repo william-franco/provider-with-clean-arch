@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_with_clean_arch/src/common/services/connection_service.dart';
 import 'package:provider_with_clean_arch/src/common/services/http_service.dart';
 import 'package:provider_with_clean_arch/src/common/services/storage_service.dart';
+import 'package:provider_with_clean_arch/src/common/services/url_launcher_service.dart';
 import 'package:provider_with_clean_arch/src/features/settings/settings.dart';
 import 'package:provider_with_clean_arch/src/features/users/users.dart';
 
@@ -20,6 +21,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
   late final ConnectionService connectionService;
   late final HttpService httpService;
   late final StorageService storageService;
+  late final UrlLauncherService urlLauncherService;
 
   // Data Sources
   late final SettingDataSource settingDataSource;
@@ -33,6 +35,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
   late final ReadThemeUseCase readThemeUseCase;
   late final UpdateThemeUseCase updateThemeUseCase;
   late final GetAllUsersUseCase getAllUsersUseCase;
+  late final OpenUrlUseCase openUrlUseCase;
 
   // ViewModels
   late final SettingViewModel settingViewModel;
@@ -45,6 +48,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
     connectionService = ConnectionServiceImpl();
     httpService = HttpServiceImpl();
     storageService = StorageServiceImpl();
+    urlLauncherService = UrlLauncherServiceImpl();
 
     // Data Sources
     settingDataSource = SettingDataSourceImpl(storageService: storageService);
@@ -56,6 +60,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
     // Repositories
     settingRepository = SettingRepositoryImpl(
       settingDataSource: settingDataSource,
+      urlLauncherService: urlLauncherService,
     );
     userRepository = UserRepositoryImpl(userDataSource: userDataSource);
 
@@ -67,11 +72,13 @@ class _DependencyInjectorState extends State<DependencyInjector> {
       settingRepository: settingRepository,
     );
     getAllUsersUseCase = GetAllUsersUseCaseImpl(userRepository: userRepository);
+    openUrlUseCase = OpenUrlUseCaseImpl(settingRepository: settingRepository);
 
     // ViewModels
     settingViewModel = SettingViewModelImpl(
       readThemeUseCase: readThemeUseCase,
       updateThemeUseCase: updateThemeUseCase,
+      openUrlUseCase: openUrlUseCase,
     );
     userViewModel = UserViewModelImpl(getAllUsersUseCase: getAllUsersUseCase);
 
@@ -101,6 +108,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
         Provider<ConnectionService>.value(value: connectionService),
         Provider<HttpService>.value(value: httpService),
         Provider<StorageService>.value(value: storageService),
+        Provider<UrlLauncherService>.value(value: urlLauncherService),
         // Data Sources
         Provider<SettingDataSource>.value(value: settingDataSource),
         Provider<UserDataSource>.value(value: userDataSource),
